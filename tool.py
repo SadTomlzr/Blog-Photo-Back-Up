@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+#coding=utf-8
 from PIL import Image
 import os
 import sys
@@ -12,6 +12,8 @@ SIZE_small = 1.5
 SIZE_more_small = 2.0
 SIZE_more_small_small = 3.0
 
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 def make_directory(directory):
     """创建目录"""
@@ -32,8 +34,8 @@ def list_img_file(directory):
     for filename in old_list:
         name, fileformat = filename.split(".")
         if fileformat.lower() == "jpg" or fileformat.lower() == "png" or fileformat.lower() == "gif":
-            new_list.append(filename)
-    print(new_list)
+            new_list.append(filename.decode("gbk"))
+    # print(new_list)
     return new_list
 
 
@@ -102,9 +104,10 @@ def handle_photo():
     file_list = list_img_file(src_dir)
     list_info = []
     file_list.sort(key=lambda x: x.split('_')[0])   # 按照日期排序
-    print("this is file name:",file_list)
+    # print("this is file name:",file_list)
     for i in range(len(file_list)):
         filename = file_list[i]
+        print(filename)
         date_str, info = filename.split("_")
         info, _ = info.split(".")
         date = datetime.strptime(date_str, "%Y-%m-%d")

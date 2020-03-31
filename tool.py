@@ -33,7 +33,7 @@ def list_img_file(directory):
         name, fileformat = filename.split(".")
         if fileformat.lower() == "jpg" or fileformat.lower() == "png" or fileformat.lower() == "gif":
             new_list.append(filename)
-    # print new_list
+    print(new_list)
     return new_list
 
 

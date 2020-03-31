@@ -1,4 +1,4 @@
-#coding: utf-8
+#-*- coding:utf-8 -*-
 from PIL import Image
 import os
 import sys
@@ -78,12 +78,12 @@ def compress_photo():
             make_directory(src_dir)
         # business logic
         file_list_src = list_img_file(src_dir)
-        print(file_list_src)
+        # print(file_list_src)
     if directory_exists(des_dir):
         if not directory_exists(des_dir):
             make_directory(des_dir)
         file_list_des = list_img_file(des_dir)
-        print(file_list_des)
+        # print(file_list_des)
     '''如果已经压缩了，就不再压缩'''
     for i in range(len(file_list_des)):
         if file_list_des[i] in file_list_src:
@@ -102,7 +102,7 @@ def handle_photo():
     file_list = list_img_file(src_dir)
     list_info = []
     file_list.sort(key=lambda x: x.split('_')[0])   # 按照日期排序
-    print(file_list)
+    print("this is file name:",file_list)
     for i in range(len(file_list)):
         filename = file_list[i]
         date_str, info = filename.split("_")
